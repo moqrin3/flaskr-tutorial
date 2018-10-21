@@ -6,8 +6,6 @@ from app.auth import login_required
 
 from flask_login import current_user, login_required
 
-# from app.db import get_db
-
 from . import db
 from .models import Post
 
@@ -18,7 +16,6 @@ bp = Blueprint('blog', __name__)
 @login_required
 def index():
 
-    # posts = Post.query.all()
     posts = db.session.query(Post). \
         filter(Post.author_id == g.user.id). \
         all()
@@ -52,29 +49,9 @@ def create():
     return render_template('blog/create.html')
 
 
-# def get_post(id, check_author=True):
-#     # post = get_db().execute(
-#     #     'SELECT p.id, title, body, created, author_id, username'
-#     #     ' FROM post p JOIN user u ON p.author_id = u.id'
-#     #     ' WHERE p.id = ?',
-#     #     (id,)
-#     # ).fetchone()
-#
-#
-#
-#     if post is None:
-#         abort(404, "Post id {0} doesn't exist.".format(id))
-#
-#     if check_author and post['author_id'] != g.user['id']:
-#         abort(403)
-#
-#     return post
-
-
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
-    # post = get_post(id)
 
     post = Post.query.get_or_404(id)
 

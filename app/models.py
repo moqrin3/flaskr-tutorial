@@ -6,8 +6,6 @@ class User(UserMixin, db.Model):
     """
     Create an User table
     """
-    # Ensures table will be named in plural and not in singular
-    # as is the name of the model
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
