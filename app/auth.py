@@ -60,7 +60,7 @@ def login():
             login_user(user)
             return redirect(url_for('index'))
 
-         flash(error)
+        flash(error)
 
     return render_template('auth/login.html')
 
