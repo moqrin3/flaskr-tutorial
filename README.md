@@ -21,3 +21,9 @@ flask db init
 flask db migrate
 flask db upgrade
 ```
+
+# Running App
+```
+export FLASK_APP=run.py
+flask run
+```
