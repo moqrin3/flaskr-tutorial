@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 from app.auth import login_required
 
 from flask_login import current_user, login_required
-
+from datetime import datetime
 from . import db
 from .models import Post
 
@@ -28,6 +28,7 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
+        created = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         error = None
 
         if not title:
@@ -38,6 +39,7 @@ def create():
         else:
             post = Post(title=title,
                         body=body,
+                        created=created,
                         author_id=g.user.id)
 
             db.session.add(post)
