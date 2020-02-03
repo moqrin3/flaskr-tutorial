@@ -8,7 +8,7 @@ touch instance/config.py
 ```
 # vi instance/config.py
 SECRET_KEY= 'your secret_key'
-SQLALCHEMY_DATABASE_URI = 'mysql:USER_NAME:USER_PASS@CONNECT_IP/DB_NAME'
+SQLALCHEMY_DATABASE_URI = 'mysql://USER_NAME:USER_PASS@CONNECT_IP/DB_NAME'
 ```
 
 ```
