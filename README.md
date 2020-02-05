@@ -1,8 +1,7 @@
 # flaskr-tutorial
 
 ```
-mkdir instance
-touch instance/config.py
+mkdir uploads && mkdir instance && touch instance/config.py
 ```
 
 ```
@@ -14,9 +13,12 @@ SQLALCHEMY_DATABASE_URI = 'mysql://USER_NAME:USER_PASS@CONNECT_IP/DB_NAME'
 ```
 # pip install
 pip install flask-sqlalchemy mysqlclient flask-login flask-migrate
+or
+pipenv install flask flask-sqlalchemy mysqlclient flask-login flask-migrate
 ```
 # For Migration
 ```
+export FLASK_APP=run.py
 flask db init
 flask db migrate
 flask db upgrade
@@ -24,6 +26,5 @@ flask db upgrade
 
 # Running App
 ```
-export FLASK_APP=run.py
 flask run
 ```
