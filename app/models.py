@@ -29,3 +29,5 @@ class Post(db.Model):
     created = db.Column(db.TIMESTAMP, nullable=False)
     title = db.Column(db.String(200), nullable=False)
     body = db.Column(db.String(200), nullable=False)
+    file_url = db.Column(db.TEXT(), nullable=True)
+    filename = db.Column(db.String(200), nullable=True)

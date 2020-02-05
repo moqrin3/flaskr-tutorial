@@ -5,12 +5,16 @@
 {% endblock %}
 
 {% block content %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <label for="title">Title</label>
     <input name="title" id="title"
            value="{{ request.form['title'] or post['title'] }}" required>
     <label for="body">Body</label>
     <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+    {% if  post.file_url  != None  %}
+    <img src="{{ post.file_url }}" width="400" height="200">
+    {% endif %}
+    <input type="file" id="img_file" name="img_file">
     <input type="submit" value="Save">
 </form>
 <hr>

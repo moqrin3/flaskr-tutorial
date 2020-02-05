@@ -10,6 +10,7 @@ __pycache__/
 
 instance/
 migrations/
+uploads/*
 
 .pytest_cache/
 .coverage
@@ -18,3 +19,6 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+Pipfile
+Pipfile.lock

@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask
-
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -9,6 +8,8 @@ login_manager = LoginManager()
 
 db = SQLAlchemy()
 
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+BUCKET_NAME = 'S3_BUCKET_NAME'
 
 def create_app(test_config=None):
     # create and configure the app
