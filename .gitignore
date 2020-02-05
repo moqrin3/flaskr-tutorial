@@ -10,6 +10,7 @@ __pycache__/
 
 instance/
 migrations/
+uploads/*
 
 .pytest_cache/
 .coverage
