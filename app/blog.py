@@ -99,18 +99,19 @@ def update(id):
 
         if error is not None:
             flash(error)
-        if 'img_file' in request.files:
-            file = request.files['img_file']
+            if 'img_file' in request.files:
+                file = request.files['img_file']
 
-            if file and allowed_file(file.filename):
-                image_url = upload_image_file(request.files.get('img_file'))
-                post.id = id
-                post.title = title
-                post.body = body
-                post.file_url = image_url
-                post.filename = file.filename
-                db.session.commit()
-                flash('Successfully edited the post.')
+                if file and allowed_file(file.filename):
+                    image_url = upload_image_file(
+                        request.files.get('img_file'))
+                    post.id = id
+                    post.title = title
+                    post.body = body
+                    post.file_url = image_url
+                    post.filename = file.filename
+                    db.session.commit()
+                    flash('Successfully edited the post.')
         else:
             post.id = id
             post.title = title
