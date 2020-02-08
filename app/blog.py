@@ -14,10 +14,6 @@ from .models import Post
 bp = Blueprint('blog', __name__)
 UPLOADS_FOLDER = "uploads"
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 
 def upload_image_file(file):
 
@@ -99,19 +95,16 @@ def update(id):
 
         if error is not None:
             flash(error)
-            if 'img_file' in request.files:
-                file = request.files['img_file']
-
-                if file and allowed_file(file.filename):
-                    image_url = upload_image_file(
-                        request.files.get('img_file'))
-                    post.id = id
-                    post.title = title
-                    post.body = body
-                    post.file_url = image_url
-                    post.filename = file.filename
-                    db.session.commit()
-                    flash('Successfully edited the post.')
+        if 'img_file' in request.files and request.files.get('img_file'):
+            file = request.files['img_file']
+            image_url = upload_image_file(request.files.get('img_file'))
+            post.id = id
+            post.title = title
+            post.body = body
+            post.file_url = image_url
+            post.filename = file.filename
+            db.session.commit()
+            flash('Successfully edited the post.')
         else:
             post.id = id
             post.title = title
